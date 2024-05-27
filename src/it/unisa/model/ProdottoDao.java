@@ -150,10 +150,28 @@ public class ProdottoDao implements ProdottoDaoInterfaccia{
 		PreparedStatement preparedStatement = null;
 
 		ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
-
 		String selectSQL = "SELECT * FROM " + ProdottoDao.TABLE_NAME;
+		
+		ArrayList<String> columns=new ArrayList<>();
+		columns.add("id_prodotto");
+		columns.add("nome");
+		columns.add("descrizione");
+		columns.add("descrizione_dettagliata");
+		columns.add("iva");
+		columns.add("in_vendita");
+		columns.add("data_uscita");
+		columns.add("prezzo");
+		columns.add("quantita");
+		columns.add("immagine");
+		columns.add("piattaforma");
+		columns.add("genere");
+		boolean match=false;
+		for(int i=0; i<columns.size(); i++) {
+			if(columns.get(i).compareTo(order)==0) match=true;
+		}
 
 		if (order != null && !order.equals("")) {
+			if(!match) return null;
 			selectSQL += " ORDER BY " + order;
 		}
 
