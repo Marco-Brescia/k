@@ -16,6 +16,7 @@ function checkEmail(inputtxt) {
 		return true;
 	
 	return false;	
+	
 }
 
 
