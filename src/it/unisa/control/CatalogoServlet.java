@@ -31,16 +31,21 @@ public class CatalogoServlet extends HttpServlet {
 		try {
 			if(action!=null) {
 				if(action.equalsIgnoreCase("add")) {
-					bean.setNome(request.getParameter("nome"));
-					bean.setDescrizione(request.getParameter("descrizione"));
+					
+					
+					
+					
+					//System.out.println(request.getParameter("nome").replaceAll("[^\\w\\s]",""));
+					bean.setNome(request.getParameter("nome").replaceAll("[^\\w\\s]",""));
+					bean.setDescrizione(request.getParameter("descrizione").replaceAll("[^\\w\\s]",""));
 					bean.setIva(request.getParameter("iva"));
 					bean.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 					bean.setQuantità(Integer.parseInt(request.getParameter("quantità")));
-					bean.setPiattaforma(request.getParameter("piattaforma"));
-					bean.setGenere(request.getParameter("genere"));
+					bean.setPiattaforma(request.getParameter("piattaforma").replaceAll("[^\\w\\s]",""));
+					bean.setGenere(request.getParameter("genere").replaceAll("[^\\w\\s]",""));
 					bean.setImmagine(request.getParameter("img"));
 					bean.setDataUscita(request.getParameter("dataUscita"));
-					bean.setDescrizioneDettagliata(request.getParameter("descDett"));
+					bean.setDescrizioneDettagliata(request.getParameter("descDett").replaceAll("[^\\w\\s]",""));
 					bean.setInVendita(true);
 					prodDao.doSave(bean);
 				}
